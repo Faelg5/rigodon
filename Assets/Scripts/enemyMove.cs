@@ -15,7 +15,7 @@ public class enemyMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		//move the enemy
 		transform.Translate (Vector3.right * speedFactor * Time.deltaTime);
 	
 
