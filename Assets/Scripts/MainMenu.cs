@@ -1,9 +1,4 @@
-﻿/// <summary>
-/// Main menu.
-/// Attached to Main camera
-/// </summary>
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class MainMenu : MonoBehaviour {
@@ -23,3 +18,4 @@ public class MainMenu : MonoBehaviour {
 		// Display background picture
 		GUI.DrawTexture (new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 	}
+}

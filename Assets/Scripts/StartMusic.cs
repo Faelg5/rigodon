@@ -22,5 +22,4 @@ public class StartMusic : MonoBehaviour {
 			audio.Play();
 		}
 	}
-
 }

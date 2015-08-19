@@ -22,18 +22,18 @@ public class CheckKeysPressed : MonoBehaviour {
 		
 		// Black note + down = good
 		
-		if (Input.GetKey ("down") && coll.gameObject.tag == "BlackNote") {
+		if (Input.GetKeyUp ("down") && coll.gameObject.tag == "BlackNote") {
 
-			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor -0.1f;
+			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor -0.05f;
 
-		} else if(Input.GetKey ("down") && coll.gameObject.tag == "WhiteNote") {
-			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +0.1f;
+		} else if(Input.GetKeyUp ("down") && coll.gameObject.tag == "WhiteNote") {
+			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +0.05f;
 
-		} else if (Input.GetKey ("up") && coll.gameObject.tag == "WhiteNote") {
-			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor -0.1f;
+		} else if (Input.GetKeyUp ("up") && coll.gameObject.tag == "WhiteNote") {
+			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor -0.05f;
 
-		} else if(Input.GetKey ("up") && coll.gameObject.tag == "BlackNote") {
-			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +0.1f;
+		} else if(Input.GetKeyUp ("up") && coll.gameObject.tag == "BlackNote") {
+			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +0.05f;
 
 		}
 	}

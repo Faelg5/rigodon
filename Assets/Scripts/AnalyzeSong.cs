@@ -95,13 +95,13 @@ public class AnalyzeSong : MonoBehaviour {
 	void SpawnNote(){
 		if (noteKey == 0){
 			//				Debug.Log(note.GetComponent<SpriteRenderer> ().sprite.ToString());
-			Instantiate(noteBlack, new Vector2(8, -2), Quaternion.identity);
+			Instantiate(noteBlack, new Vector2(12, -2), Quaternion.identity);
 			
 			//				(Texture2D)LoadAssetAtPath("Assets/Art/Pixel/notes/note_black.png", typeof(Sprite)) as Sprite);
 			
 			//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\note_black", typeof(Sprite)) as Sprite;
 		} else {
-			Instantiate(noteWhite, new Vector2(8, -2), Quaternion.identity);
+			Instantiate(noteWhite, new Vector2(12, -2), Quaternion.identity);
 			
 			//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\notes", typeof(Sprite)) as Sprite;
 		}
