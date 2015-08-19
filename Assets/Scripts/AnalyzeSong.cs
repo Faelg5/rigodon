@@ -64,8 +64,11 @@ public class AnalyzeSong : MonoBehaviour {
 
 			noteKey = Random.Range (0, 2);
 
-			InvokeRepeating("SpawnNote", 0.0f, 2.0f);
+//			InvokeRepeating("SpawnNote", 0.0f, 2.0f);
 
+//			Invoke("SpawnNote", 0.1f);
+
+			SpawnNote();
 
 //			Debug.Log ("Note to hit =" + noteKey);
 
