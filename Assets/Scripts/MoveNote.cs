@@ -3,8 +3,9 @@ using System.Collections;
 
 public class MoveNote : MonoBehaviour {
 
-	public float moveSpeed = 1.0f;
 	public float speedFactor = 1.0f;
+	public float moveSpeed = 1.0f;
+	//public float speedFactor = 1.0f;
 
 	void FixedUpdate() {
 
@@ -12,7 +13,8 @@ public class MoveNote : MonoBehaviour {
 		var rb2d = GetComponent<Rigidbody2D> ();
 		//hero = GameObject.Find ("hero");
 
-		rb2d.MovePosition (new Vector2 (rb2d.position.x - speedFactor * Time.fixedDeltaTime, -2) );
+		//add moveSpeed on the vector2's formula
+		rb2d.MovePosition (new Vector2 (rb2d.position.x - moveSpeed * speedFactor * Time.fixedDeltaTime, -2) );
 
 
 		if (transform.position.x < 0.0f) {
