@@ -12,14 +12,13 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
-	void OnGUI(){
+	void OnGUI(){ 
 		// Display background picture
 		GUI.DrawTexture (new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 	}
+}
