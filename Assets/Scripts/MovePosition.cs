@@ -8,17 +8,17 @@ public class MovePosition : MonoBehaviour {
 
 	void FixedUpdate() {
 		var rb2d = GetComponent<Rigidbody2D> ();
-		hero = GameObject.Find ("hero");
+		//hero = GameObject.Find ("hero");
 		rb2d.MovePosition (new Vector2 (rb2d.position.x + 1, 0));
 	}
 
-	void OnCollisionEnter(Collision2D collision2D) {
+    void OnCollisionEnter2D(Collision2D coll)
+    {
 
-		ContactPoint2D contactPoint2D = collision2D.contacts [0];
-		Vector2 pos = contactPoint2D.point;
-
-		Destroy(hero);
-
-	}
+        if (coll.gameObject.tag == "Border") {
+            hero = GameObject.Find ("hero");
+            Destroy(hero);
+        }
+    }
 
 }
