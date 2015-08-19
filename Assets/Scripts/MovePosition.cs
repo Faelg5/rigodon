@@ -11,7 +11,7 @@ public class MovePosition : MonoBehaviour {
 	void FixedUpdate() {
 		var rb2d = GetComponent<Rigidbody2D> ();
 		//hero = GameObject.Find ("hero");
-		rb2d.MovePosition (new Vector2 (rb2d.position.x + speedFactor * Time.fixedDeltaTime, 0) );
+		rb2d.MovePosition (new Vector2 (rb2d.position.x + (moveSpeed * speedFactor * Time.fixedDeltaTime), 0) );
 	}
 
     void OnCollisionEnter2D(Collision2D coll)
