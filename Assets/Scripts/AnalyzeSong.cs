@@ -26,7 +26,9 @@ public class AnalyzeSong : MonoBehaviour {
 
 	int noteKey;
 	
-	public Transform note;
+	public GameObject noteBlack;
+	public GameObject noteWhite;
+
 
 	// Use this for initialization
 	void Start () {
@@ -54,15 +56,29 @@ public class AnalyzeSong : MonoBehaviour {
 
 
 
-		if (100 * (c3+c4) > 0.19) {
+		if (100 * (c1+c3+c4) > 2) {
 			Debug.Log (100 * (c3 + c4));
 
 //			light1.gameObject.SetActive (false);
 
 
-			Instantiate(note, new Vector2(8, -2), Quaternion.identity);
-
 			noteKey = Random.Range (0, 2);
+
+			
+			if (noteKey == 0){
+//				Debug.Log(note.GetComponent<SpriteRenderer> ().sprite.ToString());
+				Instantiate(noteBlack, new Vector2(8, -2), Quaternion.identity);
+
+//				(Texture2D)LoadAssetAtPath("Assets/Art/Pixel/notes/note_black.png", typeof(Sprite)) as Sprite);
+
+//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\note_black", typeof(Sprite)) as Sprite;
+			} else {
+				Instantiate(noteWhite, new Vector2(8, -2), Quaternion.identity);
+
+//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\notes", typeof(Sprite)) as Sprite;
+			}
+
+
 //			Debug.Log ("Note to hit =" + noteKey);
 
 			StartCoroutine (DelaySpawn ());
