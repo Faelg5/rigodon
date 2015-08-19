@@ -16,6 +16,8 @@ public class AnalyzeSong : MonoBehaviour {
 	public Light light1;
 	
 	public float juice = 20f;
+
+
 	
 	public float[] spec;
 	
@@ -25,19 +27,32 @@ public class AnalyzeSong : MonoBehaviour {
 	public float c4;
 
 	int noteKey;
+
+	public int noteCount;
 	
 	public GameObject noteBlack;
 	public GameObject noteWhite;
 
+	GameObject mainCamera;
+
+	AudioSource audio;
+
 
 	// Use this for initialization
 	void Start () {
+
+		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+		audio = mainCamera.GetComponent<AudioSource>();
+
+		noteCount = 1;
+
 		
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		spec = AudioListener.GetSpectrumData(64,0,FFTWindow.Hamming);
+
+		spec = audio.GetSpectrumData(64,0,FFTWindow.Hamming);
 //		spec = AudioListener.GetOutputData (64,0);  
 		/*
 	c1 = 64hz
@@ -69,6 +84,9 @@ public class AnalyzeSong : MonoBehaviour {
 //			Invoke("SpawnNote", 0.1f);
 
 			SpawnNote();
+			noteCount += 1;
+
+
 
 //			Debug.Log ("Note to hit =" + noteKey);
 
