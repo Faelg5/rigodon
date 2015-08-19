@@ -56,7 +56,7 @@ public class AnalyzeSong : MonoBehaviour {
 
 
 
-		if (100 * (c1+c3+c4) > 2) {
+		if (1000 * (c3+c4) > 0.1) {
 			Debug.Log (100 * (c3 + c4));
 
 //			light1.gameObject.SetActive (false);
@@ -64,35 +64,47 @@ public class AnalyzeSong : MonoBehaviour {
 
 			noteKey = Random.Range (0, 2);
 
-			
-			if (noteKey == 0){
-//				Debug.Log(note.GetComponent<SpriteRenderer> ().sprite.ToString());
-				Instantiate(noteBlack, new Vector2(8, -2), Quaternion.identity);
-
-//				(Texture2D)LoadAssetAtPath("Assets/Art/Pixel/notes/note_black.png", typeof(Sprite)) as Sprite);
-
-//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\note_black", typeof(Sprite)) as Sprite;
-			} else {
-				Instantiate(noteWhite, new Vector2(8, -2), Quaternion.identity);
-
-//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\notes", typeof(Sprite)) as Sprite;
-			}
+			InvokeRepeating("SpawnNote", 0.0f, 2.0f);
 
 
 //			Debug.Log ("Note to hit =" + noteKey);
 
-			StartCoroutine (DelaySpawn ());
+
+
+//			StartCoroutine (DelaySpawn ());
+
+
 
 		} else {
 			light1.gameObject.SetActive(true);
+
 		}
 
 	}
 
-	IEnumerator DelaySpawn()
-	{
-		float timeToWait = 0.48f;
-		yield return new WaitForSeconds(timeToWait);
+//	IEnumerator DelaySpawn()
+//	{
+//		float timeToWait = 5f;
+//
+//		yield return new WaitForSeconds (timeToWait);
+//		SpawnNote ();
+//
+//
+//	}
+
+	void SpawnNote(){
+		if (noteKey == 0){
+			//				Debug.Log(note.GetComponent<SpriteRenderer> ().sprite.ToString());
+			Instantiate(noteBlack, new Vector2(12, -2), Quaternion.identity);
+			
+			//				(Texture2D)LoadAssetAtPath("Assets/Art/Pixel/notes/note_black.png", typeof(Sprite)) as Sprite);
+			
+			//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\note_black", typeof(Sprite)) as Sprite;
+		} else {
+			Instantiate(noteWhite, new Vector2(12, -2), Quaternion.identity);
+			
+			//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\notes", typeof(Sprite)) as Sprite;
+		}
 	}
 	
 }
