@@ -48,17 +48,23 @@ public class AnalyzeSong : MonoBehaviour {
 		cube04.gameObject.transform.localScale = new Vector3(20f,c4*juice,1f);
 
 
+
 		if (100 * (c3+c4) > 0.19) {
 			Debug.Log (100 * (c1 + c2 + c3 + c4));
 			light1.gameObject.SetActive (false);
-			Instantiate(note, new Vector3(c1*300, c2*100, 0), Quaternion.identity);
-
+			Instantiate(note, new Vector2(c1*300, c2*100), Quaternion.identity);
+			StartCoroutine (DelaySpawn ());
 		} else {
 			light1.gameObject.SetActive(true);
 
 		}
 
+	}
 
+	IEnumerator DelaySpawn()
+	{
+		float timeToWait = 1.0f;
+		yield return new WaitForSeconds(timeToWait);
 	}
 	
 }
