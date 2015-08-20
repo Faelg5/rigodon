@@ -118,7 +118,7 @@ public class AnalyzeSong : MonoBehaviour
 			
 			//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\note_black", typeof(Sprite)) as Sprite;
 		} else {
-			Instantiate(noteWhite, new Vector2(12, -2), Quaternion.identity);
+			Instantiate(noteWhite, new Vector2(12, -4), Quaternion.identity);
 			
 			//				note.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Assets\\Art\\Pixel\\notes", typeof(Sprite)) as Sprite;
 		}

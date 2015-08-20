@@ -7,6 +7,7 @@ public class MoveNote : MonoBehaviour {
 	public float moveSpeed = 1.0f;
 	//public float speedFactor = 1.0f;
 
+	
 	void FixedUpdate() {
 
 	
@@ -14,7 +15,11 @@ public class MoveNote : MonoBehaviour {
 		//hero = GameObject.Find ("hero");
 
 		//add moveSpeed on the vector2's formula
-		rb2d.MovePosition (new Vector2 (rb2d.position.x - moveSpeed * speedFactor * Time.fixedDeltaTime, -2) );
+		if (gameObject.tag == "BlackNote"){
+		rb2d.MovePosition (new Vector2 (rb2d.position.x - moveSpeed * speedFactor * Time.fixedDeltaTime, -1.5f) );
+		} else if (gameObject.tag == "WhiteNote"){
+		rb2d.MovePosition (new Vector2 (rb2d.position.x - moveSpeed * speedFactor * Time.fixedDeltaTime, -2.5f) );
+		}
 
 
 		if (transform.position.x < 0.0f) {
