@@ -15,10 +15,14 @@ public class CheckKeysPressed : MonoBehaviour {
 	public int noteCount;
 	
 	public GameObject violonSlider;
+	
 
-	public AudioMixerSnapshot happyLoop1On;
-	public AudioMixerSnapshot happyLoop1Off;
-
+	public AudioMixerSnapshot Intro;
+	public AudioMixerSnapshot HurdyGurdy;
+	public AudioMixerSnapshot Bagpipes;
+	public AudioMixerSnapshot Lead;
+	public AudioMixerSnapshot Lute;
+	public AudioMixerSnapshot Clavecin;
 
 
 	// Use this for initialization
@@ -74,10 +78,33 @@ public class CheckKeysPressed : MonoBehaviour {
 		}
 		
 		// play happy loop 1 if score > 20 and noteCount is multiple of 4
-		if (violonSlider.GetComponent<Slider>().value > 20 && noteCount%8==0){
-			happyLoop1On.TransitionTo(0.1f);			
-		} else if (violonSlider.GetComponent<Slider>().value < 16 && noteCount%8==0){
-			happyLoop1Off.TransitionTo(0.1f);			
+//		if (violonSlider.GetComponent<Slider>().value > 20 && noteCount%8==0){
+
+
+
+		if (violonSlider.GetComponent<Slider>().value > 5){
+			Intro.TransitionTo(1.0f);
 		}
+		if (violonSlider.GetComponent<Slider>().value > 10){
+			HurdyGurdy.TransitionTo(1.0f);
+		}
+		if (violonSlider.GetComponent<Slider>().value > 20){
+			Bagpipes.TransitionTo(1.0f);
+		}
+		if (violonSlider.GetComponent<Slider>().value > 40){
+			Lead.TransitionTo(1.0f);
+		}
+		if (violonSlider.GetComponent<Slider>().value > 60){
+			Lute.TransitionTo(1.0f);
+		}
+		if (violonSlider.GetComponent<Slider>().value > 85){
+			Clavecin.TransitionTo(1.0f);
+		}
+		if (violonSlider.GetComponent<Slider>().value >99){
+			Intro.TransitionTo(1.0f);
+			Debug.Log("JOLI RIGODON");
+
+			Application.LoadLevel("MainMenu");		}
 	}
+
 }
