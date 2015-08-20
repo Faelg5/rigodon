@@ -41,7 +41,6 @@ public class CheckKeysPressed : MonoBehaviour {
 	void Awake(){
 		correctAudio = GetComponent <AudioSource> ();
 		wrongAudio = GetComponent <AudioSource> ();
-	
 	}
 
 	// Update is called once per frame
@@ -75,7 +74,7 @@ public class CheckKeysPressed : MonoBehaviour {
 			violonSlider.GetComponent<Slider>().value -= 5;
 
 			
-			wrongAudio.clip = correctClip;
+			wrongAudio.clip = wrongClip;
 			wrongAudio.Play ();
 
 
@@ -97,7 +96,7 @@ public class CheckKeysPressed : MonoBehaviour {
 			violonSlider.GetComponent<Slider>().value -= 5;
 
 					
-					wrongAudio.clip = correctClip;
+					wrongAudio.clip = wrongClip;
 					wrongAudio.Play ();
 		}
 		
