@@ -7,10 +7,15 @@ public class MovePosition : MonoBehaviour {
 	public float speedFactor = 1.0f;
 
 	public GameObject hero;
+    public GameObject enemy;
 
 	void FixedUpdate() {
 		var rb2d = GetComponent<Rigidbody2D> ();
 		//hero = GameObject.Find ("hero");
+        if(moveSpeed * speedFactor < 0)
+            enemyFlip()
+
+
 		rb2d.MovePosition (new Vector2 (rb2d.position.x + moveSpeed * speedFactor * Time.fixedDeltaTime, 0) );
 	}
 
@@ -21,6 +26,11 @@ public class MovePosition : MonoBehaviour {
 //            hero = GameObject.Find ("hero");
             Destroy(hero);
         }
+    }
+
+    void enemyFlip()
+    {
+        enemy.
     }
 
 }
