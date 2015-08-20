@@ -45,7 +45,7 @@ public class AnalyzeSong : MonoBehaviour
 #if DEBUG
         double dspTime = AudioSettings.dspTime;
 #endif
-        Debug.Log("Current time audio system: "+dspTime);
+//        Debug.Log("Current time audio system: "+dspTime);
 //		spec = AudioListener.GetOutputData (64,0);  
 		/*
 	c1 = 64hz
@@ -64,7 +64,7 @@ public class AnalyzeSong : MonoBehaviour
 
 
 
-		if (1000 * (c3+c4) > 0.1) {
+		if (1000 * (c3+c4) > 0.4) {
 			Debug.Log (100 * (c3 + c4));
 
 //			light1.gameObject.SetActive (false);
