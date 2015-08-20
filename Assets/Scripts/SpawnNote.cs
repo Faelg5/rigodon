@@ -45,10 +45,7 @@ public class SpawnNote : MonoBehaviour {
 
         nbNoteSpawned++;
 
-        Debug.Log("NbNoteSpawned: " + nbNoteSpawned);
-        Debug.Log("NbMaxSpawn: " + (nbMaxSpawnNote *LevelConfig.lvlModificator[0,1]));
-
-        if(nbNoteSpawned < (nbMaxSpawnNote * LevelConfig.lvlModificator[0,1]) - Game.difficulty)
+        if(nbNoteSpawned < (nbMaxSpawnNote * LevelConfig.lvlModificator[0]) - Game.difficulty)
         {
             Invoke("SpawnNotes", spawnDelay);
         }
