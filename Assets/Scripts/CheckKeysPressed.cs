@@ -18,6 +18,13 @@ public class CheckKeysPressed : MonoBehaviour {
 	public AudioMixerSnapshot Lute;
 	public AudioMixerSnapshot Clavecin;
 
+	public AudioClip wrongClip;
+
+	public AudioClip correctClip;
+
+	AudioSource correctAudio;
+	AudioSource wrongAudio;
+
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +37,13 @@ public class CheckKeysPressed : MonoBehaviour {
 
 
 	}
+
+	void Awake(){
+		correctAudio = GetComponent <AudioSource> ();
+		wrongAudio = GetComponent <AudioSource> ();
 	
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		enemySpeedFactor = enemy.GetComponent<MovePosition>().speedFactor;
@@ -53,10 +66,17 @@ public class CheckKeysPressed : MonoBehaviour {
 
 			violonSlider.GetComponent<Slider>().value += 5;
 
+			correctAudio.clip = correctClip;
+			correctAudio.Play ();
+
 		} else if(Input.GetKeyUp ("down") && coll.gameObject.tag == "WhiteNote") {
 			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +difficulty;
 
 			violonSlider.GetComponent<Slider>().value -= 5;
+
+			
+			wrongAudio.clip = correctClip;
+			wrongAudio.Play ();
 
 
 
@@ -65,13 +85,20 @@ public class CheckKeysPressed : MonoBehaviour {
 
 			violonSlider.GetComponent<Slider>().value += 5;
 
+			
+			correctAudio.clip = correctClip;
+			correctAudio.Play ();
+
+
 
 		} else if(Input.GetKeyUp ("up") && coll.gameObject.tag == "BlackNote") {
 			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +difficulty;
 
 			violonSlider.GetComponent<Slider>().value -= 5;
 
-
+					
+					wrongAudio.clip = correctClip;
+					wrongAudio.Play ();
 		}
 		
 		// play happy loop 1 if score > 20 and noteCount is multiple of 4
