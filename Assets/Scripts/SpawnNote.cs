@@ -43,9 +43,18 @@ public class SpawnNote : MonoBehaviour {
             Instantiate(wNote, Spawners[spawner].transform.position, Quaternion.identity);
         }
 
-        if(nbNoteSpawned < (nbMaxSpawnNote * lvlModificator) - lvlDifficulty)
+        nbNoteSpawned++;
+
+        Debug.Log("NbNoteSpawned: " + nbNoteSpawned);
+        Debug.Log("NbNoteSpawned: " + ((nbMaxSpawnNote * LevelConfig.lvlModificator[0,0]) - Game.difficulty).ToString());
+
+        if(nbNoteSpawned < (nbMaxSpawnNote * LevelConfig.lvlModificator[0,0]) - Game.difficulty)
         {
             Invoke("SpawnNotes", spawnDelay);
+        }
+        else
+        {
+            Application.LoadLevel("GameOver");
         }
     }
 }
