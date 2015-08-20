@@ -1,44 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AnalyzeSong : MonoBehaviour {
+public class AnalyzeSong : MonoBehaviour
+{
 
-//	[System.Diagnostics.Conditional("DEBUG")]
+#region members
+    public float juice = 20.0f;
+    public float[] spec;
+    public float c1;
+    public float c2;
+    public float c3;
+    public float c4;
+//    public int noteKey;
+    public int noteCount;
+    public GameObject noteBlack;
+    public GameObject noteWhite;
+    public GameObject mainCamera;
+    public Light light1;
+    public AudioSource audio;
+#endregion
 #if DEBUG
-	public GameObject cube01;
-//	public GameObject cube02;
-//	public GameObject cube03;
-//	public GameObject cube04;
-//	public GameObject cube05;
+    public GameObject cube01;
+    public GameObject cube02;
+    public GameObject cube03;
+    public GameObject cube04;
+    public GameObject cube05;
 #endif
 
-
-	public Light light1;
-	
-	public float juice = 20f;
-
-
-	
-	public float[] spec;
-	
-	public float c1;
-	public float c2;
-	public float c3;
-	public float c4;
-
-	int noteKey;
-
-	public int noteCount;
-	
-	public GameObject noteBlack;
-	public GameObject noteWhite;
-
-	GameObject mainCamera;
-
-	AudioSource audio;
-
-
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
 
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -53,6 +42,10 @@ public class AnalyzeSong : MonoBehaviour {
 	void FixedUpdate () {
 
 		spec = audio.GetSpectrumData(64,0,FFTWindow.Hamming);
+#if DEBUG
+        double dspTime = AudioSettings.dspTime;
+#endif
+        Debug.Log("Current time audio system: "+dspTime);
 //		spec = AudioListener.GetOutputData (64,0);  
 		/*
 	c1 = 64hz
@@ -77,7 +70,7 @@ public class AnalyzeSong : MonoBehaviour {
 //			light1.gameObject.SetActive (false);
 
 
-			noteKey = Random.Range (0, 2);
+//			noteKey = Random.Range (0, 2);
 
 //			InvokeRepeating("SpawnNote", 0.0f, 2.0f);
 
@@ -114,6 +107,9 @@ public class AnalyzeSong : MonoBehaviour {
 //	}
 
 	void SpawnNote(){
+
+        int noteKey = Random.Range(0, 2);
+
 		if (noteKey == 0){
 			//				Debug.Log(note.GetComponent<SpriteRenderer> ().sprite.ToString());
 			Instantiate(noteBlack, new Vector2(12, -2), Quaternion.identity);
