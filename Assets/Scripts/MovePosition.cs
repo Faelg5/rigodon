@@ -11,12 +11,19 @@ public class MovePosition : MonoBehaviour {
 
     public bool facingRight = true;
 
+    void Start()
+    {
+    }
+
 	void FixedUpdate() {
 		var rb2d = GetComponent<Rigidbody2D> ();
 		//hero = GameObject.Find ("hero");
-        if (moveSpeed * speedFactor < 0)
+        if (moveSpeed * speedFactor < 0 && facingRight)
+        {
             enemyFlip();
-
+        } else if (moveSpeed * speedFactor > 0 && !facingRight) {
+            enemyFlip();
+        }
 
 		rb2d.MovePosition (new Vector2 (rb2d.position.x + moveSpeed * speedFactor * Time.fixedDeltaTime, 0) );
 	}
