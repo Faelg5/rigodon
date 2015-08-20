@@ -3,6 +3,14 @@ using System.Collections;
 
 public class SpawnNote : MonoBehaviour {
 
+    public GameObject[] target;
+    public Component wNote;
+    public Component bNote;
+
+    void Start()
+    {
+    }
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Space))
@@ -17,15 +25,14 @@ public class SpawnNote : MonoBehaviour {
     void SpawnNotes(int noteKey)
     {
 
-        var target = gameObject.GetComponent("SpawnNote");
         Debug.Log("Note key :" + noteKey);
         if (noteKey == 0)
         {
-            Instantiate(target, transform.position, Quaternion.identity);
+            Instantiate(bNote, transform.position, Quaternion.identity);
         }
         else
         {
-            Instantiate(target, transform.position, Quaternion.identity);
+            Instantiate(wNote, transform.position, Quaternion.identity);
         }
     }
 }
