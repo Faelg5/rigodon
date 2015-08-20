@@ -5,18 +5,12 @@ using System.Collections;
 
 public class CheckKeysPressed : MonoBehaviour {
 
-
 	public GameObject enemy;
 	public float enemySpeedFactor;
-
 	public float difficulty;
-
 	public GameObject mainCamera;
 	public int noteCount;
-	
 	public GameObject violonSlider;
-	
-
 	public AudioMixerSnapshot Intro;
 	public AudioMixerSnapshot HurdyGurdy;
 	public AudioMixerSnapshot Bagpipes;
@@ -111,7 +105,8 @@ public class CheckKeysPressed : MonoBehaviour {
 			Intro.TransitionTo(1.0f);
 			Debug.Log("JOLI RIGODON");
 			
-			Application.LoadLevel("MainMenu");		}
+			Application.LoadLevel("MainMenu");		
+        }
 	}
 
 }
