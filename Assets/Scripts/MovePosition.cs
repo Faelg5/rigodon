@@ -9,11 +9,13 @@ public class MovePosition : MonoBehaviour {
 	public GameObject hero;
     public GameObject enemy;
 
+    public bool facingRight = true;
+
 	void FixedUpdate() {
 		var rb2d = GetComponent<Rigidbody2D> ();
 		//hero = GameObject.Find ("hero");
-        if(moveSpeed * speedFactor < 0)
-            enemyFlip()
+        if (moveSpeed * speedFactor < 0)
+            enemyFlip();
 
 
 		rb2d.MovePosition (new Vector2 (rb2d.position.x + moveSpeed * speedFactor * Time.fixedDeltaTime, 0) );
@@ -30,7 +32,13 @@ public class MovePosition : MonoBehaviour {
 
     void enemyFlip()
     {
-        enemy.
+        // Switch the way the player is labelled as facing
+        facingRight = !facingRight;
+
+        // Multiply the player's x local scale by -1
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
 }
