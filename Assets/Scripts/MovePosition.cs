@@ -25,7 +25,7 @@ public class MovePosition : MonoBehaviour {
             enemyFlip();
         }
 
-		rb2d.MovePosition (new Vector2 (rb2d.position.x + moveSpeed * speedFactor * Time.fixedDeltaTime, 0) );
+		rb2d.MovePosition (new Vector2 (rb2d.position.x + moveSpeed * speedFactor * Time.fixedDeltaTime, 1.5f) );
 	}
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -34,6 +34,8 @@ public class MovePosition : MonoBehaviour {
         if (coll.gameObject.tag == "Border") {
 //            hero = GameObject.Find ("hero");
             Destroy(hero);
+
+			Application.LoadLevel("GameOver");
         }
     }
 

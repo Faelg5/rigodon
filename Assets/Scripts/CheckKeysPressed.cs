@@ -43,6 +43,9 @@ public class CheckKeysPressed : MonoBehaviour {
 
 		noteCount = mainCamera.GetComponent<AnalyzeSong> ().noteCount;
 
+		ChangeLoops ();
+
+
 
 	}
 	//while note is in the box, check which key is pressed
@@ -81,7 +84,11 @@ public class CheckKeysPressed : MonoBehaviour {
 //		if (violonSlider.GetComponent<Slider>().value > 20 && noteCount%8==0){
 
 
+	}
 
+	void ChangeLoops(){
+		
+		
 		if (violonSlider.GetComponent<Slider>().value > 5){
 			Intro.TransitionTo(1.0f);
 		}
@@ -103,7 +110,7 @@ public class CheckKeysPressed : MonoBehaviour {
 		if (violonSlider.GetComponent<Slider>().value >99){
 			Intro.TransitionTo(1.0f);
 			Debug.Log("JOLI RIGODON");
-
+			
 			Application.LoadLevel("MainMenu");		}
 	}
 
