@@ -10,10 +10,16 @@ public class MovePosition : MonoBehaviour {
     public GameObject enemy;
 
     public bool facingRight = true;
-
+	
     void Start()
     {
-    }
+	
+		GetComponent<Animator>().Play("IdleTalk");
+
+
+		StartCoroutine(startRunning());
+
+	}
 
 	void FixedUpdate() {
 		var rb2d = GetComponent<Rigidbody2D> ();
@@ -38,6 +44,12 @@ public class MovePosition : MonoBehaviour {
 			Application.LoadLevel("GameOver");
         }
     }
+
+	IEnumerator startRunning(){
+		yield return new WaitForSeconds(2);
+		GetComponent<Animator>().Play("Running");
+	}
+
 
     void enemyFlip()
     {
