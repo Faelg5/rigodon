@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnNote : MonoBehaviour {
 
-    public GameObject[] target;
     public Component wNote;
     public Component bNote;
-
-    void Start()
-    {
-    }
+    public List<GameObject> Spawners;
 
     void Update()
     {
@@ -25,14 +22,14 @@ public class SpawnNote : MonoBehaviour {
     void SpawnNotes(int noteKey)
     {
 
-        Debug.Log("Note key :" + noteKey);
+        int spawner = Random.Range(0, 3);
         if (noteKey == 0)
         {
-            Instantiate(bNote, transform.position, Quaternion.identity);
+            Instantiate(bNote, Spawners[spawner].transform.position, Quaternion.identity);
         }
         else
         {
-            Instantiate(wNote, transform.position, Quaternion.identity);
+            Instantiate(wNote, Spawners[spawner].transform.position, Quaternion.identity);
         }
     }
 }
