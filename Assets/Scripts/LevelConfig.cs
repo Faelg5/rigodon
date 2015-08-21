@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LevelConfig {
 
-    public static int[] lvlModificator = new int[] {5, 7};
+    public static int[] lvlModificator = new int[] {7, 9};
 
 }
 

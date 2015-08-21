@@ -18,17 +18,6 @@ public class SpawnNote : MonoBehaviour {
         Invoke("SpawnNotes", spawnDelay);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Debug.Log("Spawn");
-            
-            SpawnNotes();
-        }
-
-    }
-
     void SpawnNotes()
     {
 
