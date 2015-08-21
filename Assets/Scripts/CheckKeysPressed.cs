@@ -5,6 +5,19 @@ using System.Collections;
 
 public class CheckKeysPressed : MonoBehaviour {
 
+    enum Direction { };
+
+    private const int LVL1 = 3;
+    private const int LVL2 = 7;
+    private const int LVL3 = 15;
+    private const int LVL4 = 30;
+    private const int LVL5 = 60;
+    private const int LVL6 = 75;
+    private const int LVL7 = 95;
+    private const int WIN = 100;
+
+    private const float TRANSITIONTIME = 1.0f;
+
 	public GameObject enemy;
 	public float enemySpeedFactor;
 	public float difficulty;
@@ -110,26 +123,26 @@ public class CheckKeysPressed : MonoBehaviour {
 	void ChangeLoops(){
 		
 		
-		if (violonSlider.GetComponent<Slider>().value > 5){
-			Intro.TransitionTo(1.0f);
+		if (violonSlider.GetComponent<Slider>().value > LVL1){
+            Intro.TransitionTo(TRANSITIONTIME);
 		}
-		if (violonSlider.GetComponent<Slider>().value > 10){
-			HurdyGurdy.TransitionTo(1.0f);
+		if (violonSlider.GetComponent<Slider>().value > LVL2){
+            HurdyGurdy.TransitionTo(TRANSITIONTIME);
 		}
-		if (violonSlider.GetComponent<Slider>().value > 20){
-			Bagpipes.TransitionTo(1.0f);
+		if (violonSlider.GetComponent<Slider>().value > LVL3){
+            Bagpipes.TransitionTo(TRANSITIONTIME);
 		}
-		if (violonSlider.GetComponent<Slider>().value > 40){
-			Lead.TransitionTo(1.0f);
+		if (violonSlider.GetComponent<Slider>().value > LVL4){
+            Lead.TransitionTo(TRANSITIONTIME);
 		}
-		if (violonSlider.GetComponent<Slider>().value > 60){
-			Lute.TransitionTo(1.0f);
+		if (violonSlider.GetComponent<Slider>().value > LVL5){
+            Lute.TransitionTo(TRANSITIONTIME);
 		}
-		if (violonSlider.GetComponent<Slider>().value > 85){
-			Clavecin.TransitionTo(1.0f);
+		if (violonSlider.GetComponent<Slider>().value > LVL6){
+            Clavecin.TransitionTo(TRANSITIONTIME);
 		}
-		if (violonSlider.GetComponent<Slider>().value >99){
-			Intro.TransitionTo(1.0f);
+		if (violonSlider.GetComponent<Slider>().value >= WIN){
+            Intro.TransitionTo(TRANSITIONTIME);
 			Debug.Log("JOLI RIGODON");
 			
 			Application.LoadLevel("MainMenu");		
