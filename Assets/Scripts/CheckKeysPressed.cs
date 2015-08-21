@@ -35,8 +35,12 @@ public class CheckKeysPressed : MonoBehaviour {
 
 	public AudioClip correctClip;
 
+	public int countKeys;
+
 	AudioSource correctAudio;
 	AudioSource wrongAudio;
+
+	SpriteRenderer renderer;
 
 
 	// Use this for initialization
@@ -48,13 +52,13 @@ public class CheckKeysPressed : MonoBehaviour {
 
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 
+		renderer = gameObject.GetComponent<SpriteRenderer>();
 
 	}
 
 	void Awake(){
 		correctAudio = GetComponent <AudioSource> ();
 		wrongAudio = GetComponent <AudioSource> ();
-	
 	}
 
 	// Update is called once per frame
@@ -68,50 +72,80 @@ public class CheckKeysPressed : MonoBehaviour {
 
 
 	}
+
+	void OnTriggerEnter2D(Collider2D coll){
+		if (coll.gameObject.tag.Contains ("Note")){
+			countKeys = 1;
+		}
+	}
+
+
 	//while note is in the box, check which key is pressed
 	void OnTriggerStay2D(Collider2D coll){
 		
 		// Black note + down = good
-		
-		if (Input.GetKeyUp ("down") && coll.gameObject.tag == "BlackNote" && enemy.GetComponent<MovePosition>().speedFactor > 0.0f) {
 
-			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor -difficulty;
-
-			violonSlider.GetComponent<Slider>().value += 5;
-
-			correctAudio.clip = correctClip;
-			correctAudio.Play ();
-
-		} else if(Input.GetKeyUp ("down") && coll.gameObject.tag == "WhiteNote") {
-			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +difficulty;
-
-			violonSlider.GetComponent<Slider>().value -= 5;
-
-			
-			wrongAudio.clip = correctClip;
-			wrongAudio.Play ();
+		Debug.Log("countKeys" + countKeys);
+//		Debug.Log("coll.gameobject.tag==" + coll.gameObject.tag);
 
 
+		if (countKeys > 0) {
+			if (Input.GetKeyUp ("down") && coll.gameObject.tag == "BlackNote") {
 
-		} else if (Input.GetKeyUp ("up") && coll.gameObject.tag == "WhiteNote" && enemy.GetComponent<MovePosition>().speedFactor > 0.0f) {
-			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor -difficulty;
+				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor - difficulty;
 
-			violonSlider.GetComponent<Slider>().value += 5;
+				violonSlider.GetComponent<Slider> ().value += 5;
 
-			
-			correctAudio.clip = correctClip;
-			correctAudio.Play ();
-
+				correctAudio.clip = correctClip;
+				correctAudio.Play ();
+				countKeys = countKeys - 1;
 
 
-		} else if(Input.GetKeyUp ("up") && coll.gameObject.tag == "BlackNote") {
-			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +difficulty;
+				renderer.color = new Color (0f, 1f, 0f, 1f); // Set to opaque green
 
-			violonSlider.GetComponent<Slider>().value -= 5;
+			} else if (Input.GetKeyUp ("down") && coll.gameObject.tag == "WhiteNote") {
+				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor + difficulty;
 
-					
-					wrongAudio.clip = correctClip;
-					wrongAudio.Play ();
+				violonSlider.GetComponent<Slider> ().value -= 5;
+
+				
+				wrongAudio.clip = wrongClip;
+				wrongAudio.Play ();
+				countKeys = countKeys - 1;
+
+
+				renderer.color = new Color (1f, 0f, 0f, 1f); // Set to opaque red
+
+
+
+			} else if (Input.GetKeyUp ("up") && coll.gameObject.tag == "WhiteNote") {
+				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor - difficulty;
+
+				violonSlider.GetComponent<Slider> ().value += 5;
+
+				
+				correctAudio.clip = correctClip;
+				correctAudio.Play ();
+				countKeys = countKeys - 1;
+
+				renderer.color = new Color (0f, 1f, 0f, 1f); // Set to opaque green
+
+
+
+			} else if (Input.GetKeyUp ("up") && coll.gameObject.tag == "BlackNote") {
+				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor + difficulty;
+
+				violonSlider.GetComponent<Slider> ().value -= 5;
+
+						
+				wrongAudio.clip = wrongClip;
+				wrongAudio.Play ();
+				countKeys = countKeys - 1;
+
+				renderer.color = new Color (1f, 0f, 0f, 1f); // Set to opaque red
+			} else {
+				renderer.color = new Color (1f, 0f, 0f, 1f); // Set to opaque red
+			}
 		}
 		
 		// play happy loop 1 if score > 20 and noteCount is multiple of 4
