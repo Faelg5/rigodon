@@ -7,4 +7,9 @@ public class ChangeScene : MonoBehaviour {
     {
         Application.LoadLevel(sceneToChangeTo);
     }
+
+	public void ChangeToScene(int sceneToChangeTo)
+	{
+		Application.LoadLevel(sceneToChangeTo);
+	}
 }
