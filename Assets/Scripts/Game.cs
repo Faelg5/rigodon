@@ -11,4 +11,6 @@ public class Game {
     public static string gameVersion = "v 0.0.1 Alpha";
     public static int difficulty = (int)GameDifficulty.ez;
 
+	public static bool readOnce = false;
+
 }
