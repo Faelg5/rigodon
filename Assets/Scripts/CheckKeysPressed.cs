@@ -25,6 +25,8 @@ public class CheckKeysPressed : MonoBehaviour {
 	AudioSource correctAudio;
 	AudioSource wrongAudio;
 
+	SpriteRenderer renderer;
+
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +37,7 @@ public class CheckKeysPressed : MonoBehaviour {
 
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 
+		renderer = gameObject.GetComponent<SpriteRenderer>();
 
 	}
 
@@ -58,8 +61,14 @@ public class CheckKeysPressed : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D coll){
 		
 		// Black note + down = good
-		
-		if (Input.GetKeyUp ("down") && coll.gameObject.tag == "BlackNote" && enemy.GetComponent<MovePosition>().speedFactor > 0.0f) {
+
+//		Debug.Log("input keydown" + Input.GetKeyUp ("down"));
+//		Debug.Log("coll.gameobject.tag==" + coll.gameObject.tag);
+		Debug.Log("speedfactor of ennemy" + Input.GetKeyUp ("down"));
+
+
+
+		if (Input.GetKeyUp ("down") && coll.gameObject.tag == "BlackNote") {
 
 			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor -difficulty;
 
@@ -67,6 +76,8 @@ public class CheckKeysPressed : MonoBehaviour {
 
 			correctAudio.clip = correctClip;
 			correctAudio.Play ();
+
+			renderer.color = new Color(0f, 1f, 0f, 1f); // Set to opaque green
 
 		} else if(Input.GetKeyUp ("down") && coll.gameObject.tag == "WhiteNote") {
 			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor +difficulty;
@@ -77,9 +88,11 @@ public class CheckKeysPressed : MonoBehaviour {
 			wrongAudio.clip = wrongClip;
 			wrongAudio.Play ();
 
+			renderer.color = new Color(1f, 0f, 0f, 1f); // Set to opaque red
 
 
-		} else if (Input.GetKeyUp ("up") && coll.gameObject.tag == "WhiteNote" && enemy.GetComponent<MovePosition>().speedFactor > 0.0f) {
+
+		} else if (Input.GetKeyUp ("up") && coll.gameObject.tag == "WhiteNote") {
 			enemy.GetComponent<MovePosition>().speedFactor = enemySpeedFactor -difficulty;
 
 			violonSlider.GetComponent<Slider>().value += 5;
@@ -87,6 +100,7 @@ public class CheckKeysPressed : MonoBehaviour {
 			
 			correctAudio.clip = correctClip;
 			correctAudio.Play ();
+			renderer.color = new Color(0f, 1f, 0f, 1f); // Set to opaque green
 
 
 
@@ -96,8 +110,9 @@ public class CheckKeysPressed : MonoBehaviour {
 			violonSlider.GetComponent<Slider>().value -= 5;
 
 					
-					wrongAudio.clip = wrongClip;
-					wrongAudio.Play ();
+			wrongAudio.clip = wrongClip;
+			wrongAudio.Play ();
+			renderer.color = new Color(1f, 0f, 0f, 1f); // Set to opaque red
 		}
 		
 		// play happy loop 1 if score > 20 and noteCount is multiple of 4
