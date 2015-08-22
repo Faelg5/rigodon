@@ -7,7 +7,7 @@ public class SpawnKey : MonoBehaviour {
     private const int nbMaxSpawnKeys = 5;
     private static int nbKeysSpawned = 0;
 
-    public float spawnDelay = 3f;
+    public float spawnDelay = 1f;
     public Component leftKey;
     public Component upKey;
     public Component rightKey;

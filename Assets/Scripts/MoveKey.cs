@@ -17,7 +17,7 @@ public class MoveKey : MonoBehaviour {
         //hero = GameObject.Find ("hero");
 
         //add moveSpeed on the vector2's formula
-        if (gameObject.tag == "Arrow")
+		if (gameObject.tag == "ArrowDown" || gameObject.tag == "ArrowUp"|| gameObject.tag == "ArrowRight" || gameObject.tag == "ArrowLeft")
         {
             rb2d.MovePosition(new Vector2(rb2d.position.x - moveSpeed * speedFactor * Time.fixedDeltaTime, transform.position.y));
         }

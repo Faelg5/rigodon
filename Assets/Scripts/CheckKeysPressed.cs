@@ -74,7 +74,7 @@ public class CheckKeysPressed : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
-		if (coll.gameObject.tag.Contains ("Note")){
+		if (coll.gameObject.tag.Contains ("Arrow")){
 			countKeys = 1;
 		}
 	}
@@ -90,7 +90,7 @@ public class CheckKeysPressed : MonoBehaviour {
 
 
 		if (countKeys > 0) {
-			if (Input.GetKeyUp ("down") && coll.gameObject.tag == "BlackNote") {
+			if (Input.GetKeyUp (KeyCode.DownArrow) && coll.gameObject.tag == "ArrowDown") {
 
 				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor - difficulty;
 
@@ -103,7 +103,7 @@ public class CheckKeysPressed : MonoBehaviour {
 
 				renderer.color = new Color (0f, 1f, 0f, 1f); // Set to opaque green
 
-			} else if (Input.GetKeyUp ("down") && coll.gameObject.tag == "WhiteNote") {
+			} else if (Input.GetKeyUp (KeyCode.DownArrow) && coll.gameObject.tag != "ArrowDown") {
 				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor + difficulty;
 
 				violonSlider.GetComponent<Slider> ().value -= 5;
@@ -118,7 +118,7 @@ public class CheckKeysPressed : MonoBehaviour {
 
 
 
-			} else if (Input.GetKeyUp ("up") && coll.gameObject.tag == "WhiteNote") {
+			} else if (Input.GetKeyUp (KeyCode.UpArrow) && coll.gameObject.tag == "ArrowUp") {
 				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor - difficulty;
 
 				violonSlider.GetComponent<Slider> ().value += 5;
@@ -132,7 +132,7 @@ public class CheckKeysPressed : MonoBehaviour {
 
 
 
-			} else if (Input.GetKeyUp ("up") && coll.gameObject.tag == "BlackNote") {
+			} else if (Input.GetKeyUp (KeyCode.UpArrow) && coll.gameObject.tag != "ArrowUp") {
 				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor + difficulty;
 
 				violonSlider.GetComponent<Slider> ().value -= 5;
@@ -143,7 +143,66 @@ public class CheckKeysPressed : MonoBehaviour {
 				countKeys = countKeys - 1;
 
 				renderer.color = new Color (1f, 0f, 0f, 1f); // Set to opaque red
-			} else {
+
+			} else if (Input.GetKeyUp (KeyCode.LeftArrow) && coll.gameObject.tag == "ArrowLeft") {
+				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor - difficulty;
+				
+				violonSlider.GetComponent<Slider> ().value += 5;
+				
+				
+				correctAudio.clip = correctClip;
+				correctAudio.Play ();
+				countKeys = countKeys - 1;
+				
+				renderer.color = new Color (0f, 1f, 0f, 1f); // Set to opaque green
+				
+				
+				
+			} else if (Input.GetKeyUp (KeyCode.LeftArrow) && coll.gameObject.tag != "ArrowLeft") {
+				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor + difficulty;
+				
+				violonSlider.GetComponent<Slider> ().value -= 5;
+				
+				
+				wrongAudio.clip = wrongClip;
+				wrongAudio.Play ();
+				countKeys = countKeys - 1;
+				
+				renderer.color = new Color (1f, 0f, 0f, 1f); // Set to opaque red
+			} else if (Input.GetKeyUp (KeyCode.RightArrow) && coll.gameObject.tag == "ArrowRight") {
+				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor - difficulty;
+				
+				violonSlider.GetComponent<Slider> ().value += 5;
+				
+				
+				correctAudio.clip = correctClip;
+				correctAudio.Play ();
+				countKeys = countKeys - 1;
+				
+				renderer.color = new Color (0f, 1f, 0f, 1f); // Set to opaque green
+				
+				
+				
+			} else if (Input.GetKeyUp (KeyCode.RightArrow) && coll.gameObject.tag != "ArrowRight") {
+				enemy.GetComponent<MovePosition> ().speedFactor = enemySpeedFactor + difficulty;
+				
+				violonSlider.GetComponent<Slider> ().value -= 5;
+				
+				
+				wrongAudio.clip = wrongClip;
+				wrongAudio.Play ();
+				countKeys = countKeys - 1;
+				
+				renderer.color = new Color (1f, 0f, 0f, 1f); // Set to opaque red
+			}
+
+
+
+
+
+
+
+			else {
 				renderer.color = new Color (1f, 0f, 0f, 1f); // Set to opaque red
 			}
 		}
@@ -179,7 +238,7 @@ public class CheckKeysPressed : MonoBehaviour {
             Intro.TransitionTo(TRANSITIONTIME);
 			Debug.Log("JOLI RIGODON");
 			
-			Application.LoadLevel("MainMenu");		
+			Application.LoadLevel("LevelCompleted");		
         }
 	}
 
