@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MoveNote : MonoBehaviour {
 
-	public float speedFactor = 1.0f;
-	public float moveSpeed = 1.0f;
+	public float speedFactor = 2.0f;
+	public float moveSpeed = 2.0f;
 	//public float speedFactor = 1.0f;
 
 	

@@ -9,6 +9,15 @@ public class MovePosition : MonoBehaviour {
 	public GameObject hero;
     public GameObject enemy;
 
+	public Transform positionX;
+
+	public AudioClip audioClip1;
+	public AudioClip audioClip2;
+	public AudioClip audioClip3;
+	public AudioClip audioClip4;
+
+
+
     public bool facingRight = true;
 	
     void Start()
@@ -32,6 +41,8 @@ public class MovePosition : MonoBehaviour {
         }
 
 		rb2d.MovePosition (new Vector2 (rb2d.position.x + moveSpeed * speedFactor * Time.fixedDeltaTime, 1.5f) );
+
+
 	}
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -61,5 +72,22 @@ public class MovePosition : MonoBehaviour {
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+
+	void OnTriggerEnter2D(Collider2D coll){
+		if (coll.gameObject.tag == "AudioTrigger1") {
+			Debug.Log("audioClip1 triggered");
+			AudioSource.PlayClipAtPoint(audioClip1, new Vector2 (1,2));
+		}
+		else if (coll.gameObject.tag == "AudioTrigger2") {
+			AudioSource.PlayClipAtPoint(audioClip2, new Vector2 (1,2));
+		}
+		else if (coll.gameObject.tag == "AudioTrigger3") {
+			AudioSource.PlayClipAtPoint(audioClip3, new Vector2 (1,2));
+		}
+		else if (coll.gameObject.tag == "AudioTrigger4") {
+			AudioSource.PlayClipAtPoint(audioClip4, new Vector2 (1,2));
+		}
+
+	}
 
 }

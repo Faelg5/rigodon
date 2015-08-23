@@ -46,8 +46,6 @@ public class CheckKeysPressed : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		difficulty = 0.05f;
-
 		violonSlider = GameObject.FindGameObjectWithTag("ViolonSlider");
 
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
